@@ -29,7 +29,7 @@ class TeamTasks {
             TasksInfo changes;
             TasksInfo update;
             TasksInfo old;
-            changes[TaskStatus::NEW]=
+            update[TaskStatus::IN_PROGRESS] = Changes(tracker[person][TaskStatus::NEW], task_count);
         }
         }
 
@@ -72,10 +72,19 @@ track.AddNewTask("I");
 PrintTasksInfo(track.GetPersonTasksInfo("I"));
 cout << tasks[TaskStatus::NEW] << endl;
 int a = 5;
-cout << Changes (3, a) << " "<< a << endl; 
+// try
+TasksInfo update;
+TasksInfo stay;
+update[TaskStatus::IN_PROGRESS] = Changes(tasks[TaskStatus::NEW], a);
+cout << update[TaskStatus::IN_PROGRESS] << " update in progress and tasks to renew is " << a << endl;
+update[TaskStatus::TESTING]= Changes(tasks[TaskStatus::IN_PROGRESS], a);
+cout << update[TaskStatus::TESTING] << " update in testing  and tasks to renew is " << a << endl;
+update[TaskStatus::DONE] = Changes (tasks[TaskStatus::TESTING], a);
+cout << update[TaskStatus::DONE] << " update in done  and tasks to renew is " << a << endl;
+/* cout << Changes (3, a) << " "<< a << endl; 
 cout << a << endl;
 a = 3;
-cout << Changes (5, a) << endl;
+cout << Changes (tasks[TaskStatus::NEW], a) << endl;
 cout << a << endl;
 a = 0;
 cout << Changes (0, a) << endl;
@@ -88,5 +97,5 @@ cout << Changes (7, a) << endl;
 cout << a << endl;
 a = 4;
 cout << Changes (4, a) << endl;
-cout << a << endl;
+cout << a << endl;*/
 }
