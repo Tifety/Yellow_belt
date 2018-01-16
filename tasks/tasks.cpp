@@ -15,29 +15,6 @@ enum class TaskStatus {
 
 using TasksInfo = map<TaskStatus, int>;
 
-class TeamTasks {
-    public: 
-        const TasksInfo& GetPersonTasksInfo (const string& person) const {
-            return tracker.at(person);
-        }
-        void AddNewTask (const string& person) {
-        tracker[person][TaskStatus::NEW]++;
-        }
-
-
- /*       tuple <TasksInfo, TasksInfo> PerformPersonTasks (const string& person, int task_count) {
-            TasksInfo changes;
-            TasksInfo update;
-            TasksInfo old;
-            update[TaskStatus::IN_PROGRESS] = Changes(tracker[person][TaskStatus::NEW], task_count);
-        }
-        }
-
-   */
-    private:
-        map <string, TasksInfo> tracker;
-};
-
 int Changes (int number_tasks, int & to_update) {
     int answer;
     if (number_tasks > to_update) {
@@ -51,6 +28,37 @@ int Changes (int number_tasks, int & to_update) {
     }
     return answer;
 }
+
+class TeamTasks {
+    public: 
+        const TasksInfo& GetPersonTasksInfo (const string& person) const {
+            return tracker.at(person);
+        }
+        void AddNewTask (const string& person) {
+        tracker[person][TaskStatus::NEW]++;
+        }
+
+
+       tuple <TasksInfo, TasksInfo> PerformPersonTasks (const string& person, int task_count) {
+            TasksInfo update;
+            TasksInfo old;
+            update[TaskStatus::IN_PROGRESS] = Changes(tracker[person][TaskStatus::NEW], task_count);
+            cout << update[TaskStatus::IN_PROGRESS] << " update in progress and tasks to renew is " << task_count << endl;
+            update[TaskStatus::TESTING]= Changes(tracker[person][TaskStatus::IN_PROGRESS], task_count);
+            cout << update[TaskStatus::TESTING] << " update in testing  and tasks to renew is " << task_count << endl;
+            update[TaskStatus::DONE] = Changes(tracker[person][TaskStatus::TESTING], task_count);
+            cout << update[TaskStatus::DONE] << " update in done  and tasks to renew is " << task_count << endl;
+            old[TaskStatus::NEW] = tracker[person][TaskStatus::NEW] - update[TaskStatus::IN_PROGRESS];
+            cout << old[TaskStatus::NEW] << endl;
+           return tie (update, update);
+                    }
+
+
+ 
+    private:
+        map <string, TasksInfo> tracker;
+};
+
 
 void PrintTasksInfo (TasksInfo tasks_info) {
     cout << tasks_info[TaskStatus::NEW] << "new tasks, "
@@ -72,7 +80,10 @@ track.AddNewTask("I");
 PrintTasksInfo(track.GetPersonTasksInfo("I"));
 cout << tasks[TaskStatus::NEW] << endl;
 int a = 5;
-// try
+// trly
+cout << "=====================" << endl;
+tuple <TasksInfo, TasksInfo> tr = track.PerformPersonTasks("I", 1);
+cout << "=========================" << endl;
 TasksInfo update;
 TasksInfo stay;
 update[TaskStatus::IN_PROGRESS] = Changes(tasks[TaskStatus::NEW], a);
