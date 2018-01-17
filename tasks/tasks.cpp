@@ -43,14 +43,23 @@ class TeamTasks {
             TasksInfo update;
             TasksInfo old;
             update[TaskStatus::IN_PROGRESS] = Changes(tracker[person][TaskStatus::NEW], task_count);
-            cout << update[TaskStatus::IN_PROGRESS] << " update in progress and tasks to renew is " << task_count << endl;
             update[TaskStatus::TESTING]= Changes(tracker[person][TaskStatus::IN_PROGRESS], task_count);
-            cout << update[TaskStatus::TESTING] << " update in testing  and tasks to renew is " << task_count << endl;
             update[TaskStatus::DONE] = Changes(tracker[person][TaskStatus::TESTING], task_count);
-            cout << update[TaskStatus::DONE] << " update in done  and tasks to renew is " << task_count << endl;
             old[TaskStatus::NEW] = tracker[person][TaskStatus::NEW] - update[TaskStatus::IN_PROGRESS];
-            cout << old[TaskStatus::NEW] << endl;
-           return tie (update, update);
+           old[TaskStatus::IN_PROGRESS]= tracker[person][TaskStatus::IN_PROGRESS] - update[TaskStatus::TESTING];
+           old[TaskStatus::TESTING]= tracker[person][TaskStatus::TESTING] - update[TaskStatus::DONE];
+            tracker[person][TaskStatus::NEW]= old[TaskStatus::NEW];
+            tracker[person][TaskStatus::IN_PROGRESS]=update[TaskStatus::IN_PROGRESS]+old[TaskStatus::IN_PROGRESS];
+            tracker[person][TaskStatus::TESTING]=update[TaskStatus::TESTING]+old[TaskStatus::TESTING];
+            tracker[person][TaskStatus::DONE]+=update[TaskStatus::DONE];
+            cout << update[TaskStatus::IN_PROGRESS] << " update in progress and tasks to renew is " << task_count << endl;
+            cout << update[TaskStatus::TESTING] << " update in testing  and tasks to renew is " << task_count << endl;
+            cout << update[TaskStatus::DONE] << " update in done  and tasks to renew is " << task_count << endl;
+            cout << old[TaskStatus::NEW] << "stays in new" << endl;
+            cout << old[TaskStatus::IN_PROGRESS] << "stays in progess" << endl;
+            cout << old[TaskStatus::TESTING] << "stays in testing" << endl;
+                return tie (update, old);
+
                     }
 
 
@@ -77,13 +86,20 @@ PrintTasksInfo(tasks);
 TeamTasks track;
 track.AddNewTask("I");
 track.AddNewTask("I");
+track.AddNewTask("I");
+track.AddNewTask("I");
+track.AddNewTask("I");
+track.AddNewTask("I");
+track.AddNewTask("I");
 PrintTasksInfo(track.GetPersonTasksInfo("I"));
 cout << tasks[TaskStatus::NEW] << endl;
 int a = 5;
 // trly
 cout << "=====================" << endl;
-tuple <TasksInfo, TasksInfo> tr = track.PerformPersonTasks("I", 1);
+tuple <TasksInfo, TasksInfo> tr = track.PerformPersonTasks("I", 4);
 cout << "=========================" << endl;
+PrintTasksInfo(track.GetPersonTasksInfo("I"));
+cout << "===========================" << endl;
 TasksInfo update;
 TasksInfo stay;
 update[TaskStatus::IN_PROGRESS] = Changes(tasks[TaskStatus::NEW], a);
