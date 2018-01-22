@@ -19,6 +19,12 @@
 #include <set>
 #include <iostream>
 
+
+
+
+
+
+
 using namespace std;
 template <typename T> T Sqr(T x);
 
@@ -27,7 +33,7 @@ pair <First, Second> operator * (const pair <First, Second>& x1, const pair <Fir
 
 
 template <typename Key, typename Value>
-map <Key, Value> operator* (map <Key, Value> m1, map <Key, Value> m2);
+map <Key, Value> operator* (const map <Key, Value>& m1,const  map <Key, Value>& m2);
 
 template <typename Item>
 vector <Item> operator * (const vector <Item>& v1, const vector <Item>& v2);
@@ -43,7 +49,16 @@ vector <Item> operator * (const vector <Item>& v1, const vector <Item>& v2) {
 }
 
 template <typename Key, typename Value>
-map <Key, Value> operator* (map <Key, Value> m1, map <Key, Value> m2) {}
+map <Key, Value> operator* (const map <Key, Value>& m1,const map <Key, Value>& m2) {
+    map <Key, Value> answ;
+for (auto &item : m1) {
+    if (m2.count(item.first)) {
+        answ[item.first] = item.second * m2.at(item.first);
+    }
+}
+return m1;
+}
+
 
 template <typename First, typename Second>
 pair <First, Second> operator * (const pair <First, Second>& x1, const pair <First, Second> x2) {
@@ -54,19 +69,24 @@ pair <First, Second> operator * (const pair <First, Second>& x1, const pair <Fir
 }
 
 
-
-
 template <typename T>
 T Sqr( T x) {
     return x * x;
 }
 
+
+
+
 int main () {
     vector <int> a = {1,2,3,4,5,6};
     vector <int> b  = Sqr(a);
-    cout << "One" << endl;
-    cout << "Two" << endl;
-    for (auto item : b) {
-        cout << item << " " << endl;
+    map <int, vector <int>> m = {{1,{1, 2}}, {2,{3, 4}}};
+    m = Sqr(m);
+    for (auto item : m){
+        cout << item.first << " ";
+       for (auto i : item.second) {
+           cout << i << " ";
+       } 
+cout << endl;
     }
 }
