@@ -19,12 +19,6 @@
 #include <set>
 #include <iostream>
 
-
-
-
-
-
-
 using namespace std;
 template <typename T> T Sqr(T x);
 
@@ -32,11 +26,12 @@ template <typename First, typename Second>
 pair <First, Second> operator * (const pair <First, Second>& x1, const pair <First, Second> x2);
 
 
+template <typename Item>
+vector <Item> operator * (const vector <Item>& v1, const vector <Item>& v2);
+
 template <typename Key, typename Value>
 map <Key, Value> operator* (const map <Key, Value>& m1,const  map <Key, Value>& m2);
 
-template <typename Item>
-vector <Item> operator * (const vector <Item>& v1, const vector <Item>& v2);
 
 template <typename Item>
 vector <Item> operator * (const vector <Item>& v1, const vector <Item>& v2) {
@@ -56,7 +51,7 @@ for (auto &item : m1) {
         answ[item.first] = item.second * m2.at(item.first);
     }
 }
-return m1;
+return answ;
 }
 
 
@@ -80,7 +75,7 @@ T Sqr( T x) {
 int main () {
     vector <int> a = {1,2,3,4,5,6};
     vector <int> b  = Sqr(a);
-    map <int, vector <int>> m = {{1,{1, 2}}, {2,{3, 4}}};
+    map <int, vector <double>> m = {{1,{1, 2}}, {2,{3, 4}}};
     m = Sqr(m);
     for (auto item : m){
         cout << item.first << " ";
