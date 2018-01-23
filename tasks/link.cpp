@@ -19,19 +19,23 @@
 #include <map>
 #include <iostream>
 #include <string>
+#include <exception>
 
 using namespace std;
 
-template <typename Key, typename Value> Value& GetRefStrict (map <Key, Value> m, Key i);
+template <typename Key, typename Value> Value& GetRefStrict (map <Key, Value>& m, Key i);
 
 template <typename Key, typename Value> 
-Value&GetRefSrtict (map  <Key, Value> m, Key i) {
-Value& answer = &m[i];
-    return answer;
+Value& GetRefStrict (map  <Key, Value>& m, Key i) {
+    if (m.count(i)) return (m.at(i));
+    else throw runtime_error("");
 }
+
 
 int main () {
 map <int, string> m = {{0, "value"}};
+map <int, int> k = {{0, 1}};
+int & a = GetRefStrict(k, 1);
 string& item = GetRefStrict(m, 0);
 item = "newvalue";
 cout << m[0] << endl;
