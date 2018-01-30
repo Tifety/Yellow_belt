@@ -23,24 +23,33 @@ struct Query {
 istream& operator >> (istream& is, Query& q) {
     string  operation;
     is >> operation;
-    if (operation == "NEW_BUS") q.type=QueryType::NewBus;
-    if (operation == "BUSES_FOR_STOP") q.type = QueryType::BusesForStop;
-    if (operation == "STOPS_FOR_BUS") q.type = QueryType::StopsForBus;
-    if (operation == "ALL BUSES") q.type = QueryType::AllBuses;
-    is  >> q.bus >> q.stop;
-    for (int i = 0; i < q.stops.size(); i ++) {
-        string a;
-        is >> a;
-        q.stops.push_back(a);
+    if (operation == "NEW_BUS") {
+        q.type=QueryType::NewBus;
+        is >> q.bus;
+        int stop_count;
+        is >> stop_count;
+        for (int i = 0; i < stop_count; i++) {
+            string a;
+            is >> a;
+            q.stops.push_back(a);
+        }
+    } else if (operation == "BUSES_FOR_STOP") {
+        q.type = QueryType::BusesForStop;
+        is >> q.stop;
+    } else if (operation == "STOPS_FOR_BUS") {
+        q.type = QueryType::StopsForBus;
+        is >> q.bus;
+    } else if (operation == "ALL_BUSES") {
+        q.type = QueryType::AllBuses;
     }
-    // Реализуйте эту функцию
   return is;
 }
-/*  
 struct BusesForStopResponse {
-  // Наполните полями эту структуру
+string stop;
+vector <string> buses_for_stop;
 };
 
+/*
 ostream& operator << (ostream& os, const BusesForStopResponse& r) {
   // Реализуйте эту функцию
   return os;
@@ -89,46 +98,26 @@ int main() {
   int query_count;
   Query q;
 
-  cin >> query_count;
-    cin >> q;
-switch (q.type) {
-    case QueryType::NewBus:
-        cout << "New Bus" << endl;
-        break;
-    case QueryType::BusesForStop:
-        cout << "Bus" << endl;
-        break;
-    case QueryType::StopsForBus:
-        cout << "Stops" << endl;
-        break;
-    case QueryType::AllBuses:
-        cout << "All" << endl;
-        break;
-}
-    cout << q.bus << endl;
-cout << q.stop << endl;
-for (auto i : q.stops) {
-    cout << i << " ";
-}
-cout << endl;
-/* BusManager bm;
+
+
+  // BusManager bm;
   for (int i = 0; i < query_count; ++i) {
     cin >> q;
     switch (q.type) {
     case QueryType::NewBus:
-      bm.AddBus(q.bus, q.stops);
+
+   //   bm.AddBus(q.bus, q.stops);
       break;
     case QueryType::BusesForStop:
-      cout << bm.GetBusesForStop(q.stop) << endl;
+   //   cout << bm.GetBusesForStop(q.stop) << endl;
       break;
     case QueryType::StopsForBus:
-      cout << bm.GetStopsForBus(q.bus) << endl;
+   //   cout << bm.GetStopsForBus(q.bus) << endl;
       break;
     case QueryType::AllBuses:
-      cout << bm.GetAllBuses() << endl;
+   //   cout << bm.GetAllBuses() << endl;
       break;
     }
   }
-*/
   return 0;
 }
