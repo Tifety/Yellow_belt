@@ -72,41 +72,72 @@ ostream& operator << (ostream& os, const AllBusesResponse& r) {
   // Реализуйте эту функцию
   return os;
 }
-
+*/
 class BusManager {
 public:
   void AddBus(const string& bus, const vector<string>& stops) {
-    // Реализуйте этот метод
+     for (string stop : stops) {
+         buses_with_stops[bus].push_back(stop);
+         stops_with_buses[stop].push_back(bus);
+     }
+      // Реализуйте этот метод
   }
 
-  BusesForStopResponse GetBusesForStop(const string& stop) const {
+ // BusesForStopResponse GetBusesForStop(const string& stop) const {
     // Реализуйте этот метод
-  }
+//  }
 
-  StopsForBusResponse GetStopsForBus(const string& bus) const {
+  //StopsForBusResponse GetStopsForBus(const string& bus) const {
     // Реализуйте этот метод
-  }
+ // }
 
-  AllBusesResponse GetAllBuses() const {
+ // AllBusesResponse GetAllBuses() const {
     // Реализуйте этот метод
+//  }
+
+  void Print_fucking_all () {
+      cout << "BUSES:" << endl;
+    for (auto item : buses_with_stops) {
+        cout << item.first << ": ";
+        for (auto s : item.second) {
+            cout << s << " ";
+        }
+        cout << endl;
+    }
+    cout << "STOPS:" << endl;
+    for (auto item : stops_with_buses) {
+        cout << item.first << ": ";
+        for (auto a : item.second) {
+            cout << a << " ";
+        }
+        cout << endl;
+    }
   }
+    private:
+  map <string, vector <string>> buses_with_stops;
+  map <string, vector <string>> stops_with_buses;
+
 };
 
 // Не меняя тела функции main, реализуйте функции и классы выше
-*/
+
 int main() {
   int query_count;
   Query q;
 
 
-
-  // BusManager bm;
+    cin >> query_count;
+   BusManager bm;
   for (int i = 0; i < query_count; ++i) {
     cin >> q;
     switch (q.type) {
     case QueryType::NewBus:
-
-   //   bm.AddBus(q.bus, q.stops);
+   cout << "IN1" << endl;
+   bm.AddBus(q.bus, q.stops);
+   cout << "OUT1" << endl;
+   cout << "IN" << endl;
+   bm.Print_fucking_all();
+   cout << "OUT" << endl;
       break;
     case QueryType::BusesForStop:
    //   cout << bm.GetBusesForStop(q.stop) << endl;
