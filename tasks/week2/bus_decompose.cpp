@@ -28,10 +28,14 @@ istream& operator >> (istream& is, Query& q) {
         is >> q.bus;
         int stop_count;
         is >> stop_count;
-        for (int i = 0; i < stop_count; i++) {
-            string a;
-            is >> a;
-            q.stops.push_back(a);
+        q.stops.resize(stop_count);
+//        for (int i = 0; i < stop_count; i++) {
+//            string a;
+//            is >> a;
+//            q.stops.push_back(a);
+ //       }
+        for (string & st : q.stops) {
+            cin >> st;
         }
     } else if (operation == "BUSES_FOR_STOP") {
         q.type = QueryType::BusesForStop;
@@ -130,6 +134,10 @@ int main() {
    BusManager bm;
   for (int i = 0; i < query_count; ++i) {
     cin >> q;
+    cout << " stops are ";
+    for (auto x : q.stops) 
+        cout << x << " ";
+    cout << endl;
     switch (q.type) {
     case QueryType::NewBus:
    cout << "IN1" << endl;
