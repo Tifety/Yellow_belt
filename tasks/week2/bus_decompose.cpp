@@ -49,18 +49,26 @@ istream& operator >> (istream& is, Query& q) {
   return is;
 }
 struct BusesForStopResponse {
-string stop;
-vector <string> buses_for_stop;
+vector <string> buses;
 };
 
-/*
+
 ostream& operator << (ostream& os, const BusesForStopResponse& r) {
-  // Реализуйте эту функцию
+   cout << "IN5" << endl;
+  if (r.buses.size()== 0) {
+     os << "No stop" << endl;
+  } else {
+   cout << "IN6" << endl;
+      for (const string & bus : r.buses) {
+          os << bus << " ";
+      }
+  }
   return os;
 }
 
 struct StopsForBusResponse {
-  // Наполните полями эту структуру
+
+    // Наполните полями эту структуру
 };
 
 ostream& operator << (ostream& os, const StopsForBusResponse& r) {
@@ -69,14 +77,24 @@ ostream& operator << (ostream& os, const StopsForBusResponse& r) {
 }
 
 struct AllBusesResponse {
-  // Наполните полями эту структуру
+  const map <string, vector <string>> all_buses;
 };
 
 ostream& operator << (ostream& os, const AllBusesResponse& r) {
-  // Реализуйте эту функцию
+  if (r.all_buses.size() == 0) {
+      os << "No buses" << endl;
+  } else {
+    for (const auto& bus : r.all_buses) {
+        os << "Bus " << bus.first << ": ";
+        for (const string & stop : bus.second) {
+            os << stop << " ";
+        }
+    cout << endl;
+    }
+  }
   return os;
 }
-*/
+
 class BusManager {
 public:
   void AddBus(const string& bus, const vector<string>& stops) {
@@ -87,17 +105,25 @@ public:
       // Реализуйте этот метод
   }
 
- // BusesForStopResponse GetBusesForStop(const string& stop) const {
-    // Реализуйте этот метод
-//  }
+  BusesForStopResponse GetBusesForStop(const string& stop) const {
+   cout << "IN3" << endl;
+    BusesForStopResponse answer;
+  if (stops_with_buses.count(stop)!= 0) {
+   cout << "IN4" << endl;
+      for (const string& bus : stops_with_buses.at(stop)) {
+          answer.buses.push_back(bus);
+      }
+  }
+return answer;
+ }
 
   //StopsForBusResponse GetStopsForBus(const string& bus) const {
     // Реализуйте этот метод
  // }
 
- // AllBusesResponse GetAllBuses() const {
-    // Реализуйте этот метод
-//  }
+ AllBusesResponse GetAllBuses() const {
+
+ }
 
   void Print_fucking_all () {
       cout << "BUSES:" << endl;
@@ -148,7 +174,8 @@ int main() {
    cout << "OUT" << endl;
       break;
     case QueryType::BusesForStop:
-   //   cout << bm.GetBusesForStop(q.stop) << endl;
+   cout << "IN2" << endl;
+   cout << bm.GetBusesForStop(q.stop) << endl;
       break;
     case QueryType::StopsForBus:
    //   cout << bm.GetStopsForBus(q.bus) << endl;
