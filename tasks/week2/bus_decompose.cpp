@@ -77,7 +77,7 @@ ostream& operator << (ostream& os, const StopsForBusResponse& r) {
 }
 
 struct AllBusesResponse {
-  const map <string, vector <string>> all_buses;
+ map <string, vector <string>> all_buses;
 };
 
 ostream& operator << (ostream& os, const AllBusesResponse& r) {
@@ -122,7 +122,12 @@ return answer;
  // }
 
  AllBusesResponse GetAllBuses() const {
-
+    AllBusesResponse answer;
+    for (const auto & bus : buses_with_stops) {
+        for (const string& stop : bus.second) {
+        answer.all_buses[bus.first].push_back(stop);
+        }
+    }
  }
 
   void Print_fucking_all () {
@@ -181,7 +186,8 @@ int main() {
    //   cout << bm.GetStopsForBus(q.bus) << endl;
       break;
     case QueryType::AllBuses:
-   //   cout << bm.GetAllBuses() << endl;
+ bm.GetAllBuses();
+      //   cout << bm.GetAllBuses() << endl;
       break;
     }
   }
