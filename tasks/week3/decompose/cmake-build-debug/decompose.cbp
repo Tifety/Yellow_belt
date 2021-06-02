@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="decompose"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="decompose">
+				<Option output="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/decompose" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/."/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 decompose"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="decompose/fast">
+				<Option output="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/decompose" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/."/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 decompose/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/bus_manager.cpp">
+			<Option target="decompose"/>
+		</Unit>
+		<Unit filename="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/bus_manager.h">
+			<Option target="decompose"/>
+		</Unit>
+		<Unit filename="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/main.cpp">
+			<Option target="decompose"/>
+		</Unit>
+		<Unit filename="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/query.cpp">
+			<Option target="decompose"/>
+		</Unit>
+		<Unit filename="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/query.h">
+			<Option target="decompose"/>
+		</Unit>
+		<Unit filename="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/responses.cpp">
+			<Option target="decompose"/>
+		</Unit>
+		<Unit filename="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/responses.h">
+			<Option target="decompose"/>
+		</Unit>
+		<Unit filename="/home/tifet/C/YandexC/Yellow_belt/tasks/week3/decompose/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

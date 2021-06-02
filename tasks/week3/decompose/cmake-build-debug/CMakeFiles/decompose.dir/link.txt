@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/decompose.dir/bus_manager.cpp.o CMakeFiles/decompose.dir/main.cpp.o CMakeFiles/decompose.dir/query.cpp.o CMakeFiles/decompose.dir/responses.cpp.o  -o decompose 
